@@ -69,7 +69,7 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 	}
 
 	m := Message{
-		Content: name + " joined",
+		Content: "Một người dùng đã tham gia đoạn chat",
 		RoomID:  roomID,
 		Name:    name,
 	}
