@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"fmt"
 	"golang-test/utils"
 )
 
@@ -40,11 +41,12 @@ func (s service) CreateUser(ctx context.Context, req CreateUserReq) (CreateUserR
 }
 
 func (s service) Login(ctx context.Context, req LoginReq) (LoginRes, error) {
+	fmt.Println(req)
 	user, err := s.repo.GetUserByEmail(ctx, req.Email)
 	if err != nil {
 		return LoginRes{}, err
 	}
-
+	
 	err = utils.CheckPassword(user.Password, req.Password)
 	if err != nil {
 		return LoginRes{}, err
